@@ -15,7 +15,7 @@ Copy the header file and the C++ file to your directory and use the function ins
   
 the "Main.cpp" contains the example of the Aquamarine UI, **DO NOT** copy that if you don't need it
   
-```API Reference
+```cpp
 //Creating the basic window
 Aquamarine_Window exampleWindow = Aquamarine_Window();
 exampleWindow.CreateCustomizedWindow(1366, 768, RGB, 1.0f, "Default");
