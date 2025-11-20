@@ -1,7 +1,7 @@
 //this is where the Aquamarine UI Example exists
 //NOTICE: THIS UI FRAMEWORK IS STILL UNDER CONSTRUCTION AND IN EXPERIMENTAL PHASE
 //Contribution is welcomed
-//this is a toy UI Framework
+//this is a toy UI Framework, if there's any bugs or problems, please report it in the issues section on GitHub
 
 #include <iostream>
 #include <GL/glew.h>

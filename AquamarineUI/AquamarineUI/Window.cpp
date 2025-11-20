@@ -2,6 +2,7 @@
 
 #include "Window.h"
 #include <iostream>
+#include <math.h>
 
 
 Aquamarine_Window::Aquamarine_Window(): windowWidth(800), windowHeight(600), windowColor_R(0), windowColor_G(0), windowColor_B(0), windowColor_A(0.0f){}
@@ -48,10 +49,11 @@ void Aquamarine_Window::CreateCustomizedWindow(double windowsWidth_in, double wi
     
     CreateDefaultWindow();
     
-    windowColor_R = windowRGB[0]/255;
-    windowColor_G = windowRGB[1]/255;
-    windowColor_B = windowRGB[2]/255;
+    windowColor_R = windowRGB[0]*std::pow(255, -1);
+    windowColor_G = windowRGB[1]*std::pow(255, -1);
+    windowColor_B = windowRGB[2]*std::pow(255, -1);
     windowColor_A = A_in_RGBA_Formatt;
+    
     glClearColor(windowColor_R, windowColor_G, windowColor_B,windowColor_A);
     
 }
@@ -69,7 +71,7 @@ void Aquamarine_Window::RenderBegin(){
 
 void Aquamarine_Window::RenderEnd(){
     glfwPollEvents();
-    glfwSwapInterval(1);
+    glfwSwapBuffers(defaultWindow);
 }
 
 
