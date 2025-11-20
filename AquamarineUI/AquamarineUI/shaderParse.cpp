@@ -89,7 +89,8 @@ unsigned int shaderParser::shaderCreation(std::string shaderFilePath){
     //get the shader source to the string to hold it temporarily hold the source code
     static std::tuple<std::string,std::string>(TempShaderSource) = shaderParse(shaderFilePath);
     shader_Source_Vertex = std::get<0>(TempShaderSource);
-    shader_Source_Vertex = std::get<1>(TempShaderSource);
+    shader_Source_fragment = std::get<1>(TempShaderSource);
+    
     
     //create the program that use the shader instead of the system generic shader
     program_id = glCreateProgram();
