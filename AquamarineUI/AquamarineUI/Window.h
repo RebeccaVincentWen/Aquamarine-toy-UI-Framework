@@ -1,4 +1,5 @@
 
+#pragma once
 //this header file contains the Creation of the Window and the property behind it.
 
 #include <GL/glew.h>

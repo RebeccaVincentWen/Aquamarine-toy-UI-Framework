@@ -119,3 +119,8 @@ void  shaderParser::useShader(){
 
 
 
+void shaderParser::SetUniformVariables1i(std::string& UniformVariableName, int data){
+    static unsigned int Location_temp = glGetUniformLocation(program_id, UniformVariableName.c_str());
+    glUniform1i(Location_temp ,data);
+}
+

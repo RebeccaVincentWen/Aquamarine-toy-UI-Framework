@@ -20,5 +20,5 @@ public:
     
     void useShader();
     
-    void SetUniformVariables(std::string& nameOfUniformVariable);
+    void SetUniformVariables1i(std::string& nameOfUniformVariable, int data);
 };
