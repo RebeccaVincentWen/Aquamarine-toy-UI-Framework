@@ -17,7 +17,8 @@ the "Main.cpp" contains the example of the Aquamarine UI, **DO NOT** copy that i
   
 ```cpp
 //Creating the basic window
+//Parameter Explanation(window width, window height, color array, window title)
 Aquamarine_Window exampleWindow = Aquamarine_Window();
-exampleWindow.CreateCustomizedWindow(1366, 768, RGB, 1.0f, "Default");
+exampleWindow.CreateCustomizedWindow(1366, 768, RGB, 1.0f, "Default Window Title");
 
 ```
