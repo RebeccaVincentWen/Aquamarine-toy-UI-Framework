@@ -5,11 +5,20 @@
 #include <iostream>
 #include <array>
 
+#include "Window.h"
+
 class Aquamarine_Button {
 private:
     std::array<float, 2> position;
     std::array<float, 4> Button_Color;
     int Button_Width, Button_height;
+    
+    std::array<float, 8> actualPosition = {
+        0.3, 0.4,
+        0.6, 0.4,
+        0.6, 0.8,
+        0.3, 0.8
+    };
     
     std::array<unsigned int, 6> indices_Rectangle = {0,1,2,2,3,0};
     
@@ -19,9 +28,10 @@ public:
     Aquamarine_Button();
     ~Aquamarine_Button();
     
-    void setButtonPosition(float Position_x, float Position_y);
+    void setButtonPosition(float Position_x, float Position_y, Aquamarine_Window& window);
     void setButtonColor(float Color_R, float Color_G,float Color_B,float Color_A);
     
+    void CreateButton();
     void DrawButton();
     
 };

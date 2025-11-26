@@ -9,6 +9,7 @@
 
 #include "Window.h"
 #include "shaderParse.h"
+#include "Button.hpp"
 
 int main(){
     
@@ -22,11 +23,16 @@ int main(){
     (*shader).shaderCreation("./dependencies/shader/shader.glsl");
     (*shader).useShader();
     
+    Aquamarine_Button exampleButton = Aquamarine_Button();
+    exampleButton.CreateButton();
+    exampleButton.setButtonPosition(200, 300, exampleWindow);
+    
     while (!exampleWindow.getWindowStatus()) {
         
         //Add this RenderBegin to start the render process
         exampleWindow.RenderBegin();
         //the actual content render here and till the expression that says the end of the renderation
+        exampleButton.DrawButton();
         
         exampleWindow.RenderEnd();
     }

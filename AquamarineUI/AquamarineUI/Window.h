@@ -29,5 +29,7 @@ public:
     void RenderBegin();
     void RenderEnd();
     
+    std::array<int, 2> GetWindowHeightAndWidth();
+    
     void GLFWTerminate();
 };

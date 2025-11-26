@@ -82,3 +82,8 @@ bool Aquamarine_Window::getWindowStatus(){
     return windowShouldClose;
 }
 
+
+std::array<int, 2> Aquamarine_Window::GetWindowHeightAndWidth(){
+    return {windowWidth, windowHeight};
+}
+
