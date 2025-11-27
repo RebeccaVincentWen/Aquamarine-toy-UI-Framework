@@ -11,7 +11,7 @@
 #include <GLFW/glfw3.h>
 
 
-
+//default button is set to black, position is set to the default x = 0, y = 0, from the bottom left
 Aquamarine_Button::Aquamarine_Button(): position({0,0}), Button_Color({0.0f, 0.0f, 0.0f, 1.0f}), Button_Width(200), Button_height(200){}
 
 Aquamarine_Button::~Aquamarine_Button(){}
@@ -53,6 +53,7 @@ void Aquamarine_Button::CreateButton(){
     glGenVertexArrays(1, &vertexArrayObject);
     glBindVertexArray(vertexArrayObject);
     
+    //enable the vertex array and tell the shader the inner layout
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
@@ -67,4 +68,8 @@ void Aquamarine_Button::DrawButton(){
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
+void Aquamarine_Button::setUniform4floats(shaderParser& shader ,std::string& name, float inputFloat_01, float inputFloat_02, float inputFloat_03, float inputFloat_04){
+    unsigned int uniformVariableLocation = glGetUniformLocation(shader.getPorogramID(), name.c_str());
+    glUniform4f(uniformVariableLocation, inputFloat_01, inputFloat_02, inputFloat_03, inputFloat_04);
+}
 

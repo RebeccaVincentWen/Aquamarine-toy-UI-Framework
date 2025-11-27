@@ -21,6 +21,8 @@ public:
     Aquamarine_Window();
     ~Aquamarine_Window();
     
+    //Call this function if you want to explicitly manage the window status
+    //no need to call this function if you decide to let the program automatically
     bool getWindowStatus();
     
     void CreateDefaultWindow();

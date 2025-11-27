@@ -21,4 +21,6 @@ public:
     void useShader();
     
     void SetUniformVariables1i(std::string& nameOfUniformVariable, int data);
+    
+    unsigned int getPorogramID();
 };

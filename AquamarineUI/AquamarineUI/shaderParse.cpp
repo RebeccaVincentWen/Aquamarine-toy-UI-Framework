@@ -124,3 +124,6 @@ void shaderParser::SetUniformVariables1i(std::string& UniformVariableName, int d
     glUniform1i(Location_temp ,data);
 }
 
+
+unsigned int shaderParser::getPorogramID(){ return program_id;}
+
