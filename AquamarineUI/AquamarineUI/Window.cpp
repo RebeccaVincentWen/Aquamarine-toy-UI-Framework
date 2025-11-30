@@ -87,3 +87,6 @@ std::array<int, 2> Aquamarine_Window::GetWindowHeightAndWidth(){
     return {windowWidth, windowHeight};
 }
 
+GLFWwindow* Aquamarine_Window::getWindowObject(){
+    return defaultWindow;
+}

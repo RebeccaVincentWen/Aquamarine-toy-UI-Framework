@@ -73,3 +73,18 @@ void Aquamarine_Button::setUniform4floats(shaderParser& shader ,std::string& nam
     glUniform4f(uniformVariableLocation, inputFloat_01, inputFloat_02, inputFloat_03, inputFloat_04);
 }
 
+
+void Aquamarine_Button::setButtonColor(shaderParser& shader,float Color_R, float Color_G,float Color_B,float Color_A){
+    std::string uniformName = "backgroundColor";
+    setUniform4floats(shader, uniformName, Color_R, Color_G, Color_B, Color_A);
+}
+
+void Aquamarine_Button::getCursorPosition(Aquamarine_Window* window){
+    //get the position of the cursor and store it in the position array in the class entity
+    glfwGetCursorPos((*window).getWindowObject(), cursorPosition_x, cursorPosition_y);
+}
+
+void Aquamarine_Button::PositionMoveFeedBack(){
+    //add some feedback when the cursor move into the range of the button
+    
+}

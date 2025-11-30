@@ -34,4 +34,6 @@ public:
     std::array<int, 2> GetWindowHeightAndWidth();
     
     void GLFWTerminate();
+    
+    GLFWwindow* getWindowObject();
 };
