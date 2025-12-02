@@ -57,6 +57,7 @@ void Aquamarine_Button::CreateButton(){
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
+    //set the index buffer object
     glGenBuffers(1, &IndexBufferObject);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexBufferObject);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_Rectangle.size()*sizeof(unsigned int), indices_Rectangle.data(), GL_DYNAMIC_DRAW);
@@ -69,22 +70,52 @@ void Aquamarine_Button::DrawButton(){
 }
 
 void Aquamarine_Button::setUniform4floats(shaderParser& shader ,std::string& name, float inputFloat_01, float inputFloat_02, float inputFloat_03, float inputFloat_04){
+
+    //set the uniform inside the shader, should be a generic function here...
     unsigned int uniformVariableLocation = glGetUniformLocation(shader.getPorogramID(), name.c_str());
     glUniform4f(uniformVariableLocation, inputFloat_01, inputFloat_02, inputFloat_03, inputFloat_04);
 }
 
 
 void Aquamarine_Button::setButtonColor(shaderParser& shader,float Color_R, float Color_G,float Color_B,float Color_A){
+    
+    //check the avalibility when pass the value to the uniform
+    //this algorithm is pretty suck, however i will find a more better one later in the program and fix that issue
+    if (Color_R<0) {
+        Color_R = 0;
+    }
+    if (Color_G<0) {
+        Color_G = 0;
+    }
+    if (Color_B<0) {
+        Color_B = 0;
+    }
+    
+    
+    //set the color of the button via RGBA form color
     std::string uniformName = "backgroundColor";
     setUniform4floats(shader, uniformName, Color_R, Color_G, Color_B, Color_A);
 }
 
 void Aquamarine_Button::getCursorPosition(Aquamarine_Window* window){
     //get the position of the cursor and store it in the position array in the class entity
-    glfwGetCursorPos((*window).getWindowObject(), cursorPosition_x, cursorPosition_y);
+    windowObject = window;
+    //get the cursor position relative to the upper left corner of the screen
+    glfwGetCursorPos((*window).getWindowObject(), &cursorPosition_x, &cursorPosition_y);
 }
 
-void Aquamarine_Button::PositionMoveFeedBack(){
+void Aquamarine_Button::PositionMoveFeedBack(shaderParser& shader){
     //add some feedback when the cursor move into the range of the button
-    
+    getCursorPosition(windowObject);
+    //give the feed back to the user when the cursor move inside the area on the button
+    //aka when you put the cursor on the button, the button will give you the feedback that your cursor
+    //has the ability to click on the button
+    if(checkPositionArea(cursorPosition_x, cursorPosition_y)){
+        setButtonColor(shader, Button_Color[0] - 65, Button_Color[1] - 65, Button_Color[2] - 65, Button_Color[3]);
+    }
+}
+
+bool Aquamarine_Button::checkPositionArea(double& cursorPosition_x, double& cursorPosition_y){
+    static bool result = false;
+    return result;
 }
