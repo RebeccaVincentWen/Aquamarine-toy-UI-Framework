@@ -10,6 +10,7 @@ The GUI Framework is completely build on the OpenGL Framework and on macOS platf
 
 **Usage:**  
 In the AquamarineUI/AquamarineUI, there will be the header file and the C++ source file  
+To run the code correctly, you need the dependency of OpenGL, GLEW, GLFW. So make sure you have the environment configured  
   
 Copy the header file and the C++ file to your directory and use the function inside it  
   
