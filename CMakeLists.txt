@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.15)
+project(AquamarineUI VERSION 0.1 LANGUAGES CXX)
+
+# 1. Set C++ Standard
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 2. Find Necessary Packages
+# Find OpenGL (Internal to CMake)
+find_package(OpenGL REQUIRED)
+
+# Find GLEW (Internal to CMake)
+# For static linking, set: set(GLEW_USE_STATIC_LIBS TRUE)
+find_package(GLEW REQUIRED)
+
+# Find GLFW (Installed via Homebrew)
+# Some systems use 'glfw3', others use 'GLFW' or 'glfw'
+find_package(glfw3 CONFIG REQUIRED)
+
+# 3. Add Executable
+# Replace main.cpp with your actual list of source files
+add_executable(${PROJECT_NAME} 
+    main.cpp
+    Button.cpp
+    Button.hpp
+    shaderParse.cpp
+    shaderParse.h
+    VertexArray.cpp
+    VertexArray.hpp
+    Window.h
+    Window.cpp)
+
+# 4. Link Libraries using Modern Targets
+# Target-based linking handles include directories automatically
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    OpenGL::GL 
+    GLEW::GLEW 
+    glfw
+)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE 
+    SHADER_PATH="${CMAKE_CURRENT_SOURCE_DIR}/"
+)
+
+# 5. Platform-Specific Fixes (For macOS Frameworks)
+# GLFW on macOS often requires extra system frameworks to link correctly
+if(APPLE)
+    target_link_libraries(${PROJECT_NAME} PRIVATE 
+        "-framework Cocoa" 
+        "-framework IOKit" 
+        "-framework CoreVideo"
+    )
+endif()
+

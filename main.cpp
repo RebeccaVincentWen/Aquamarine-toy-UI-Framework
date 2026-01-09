@@ -12,7 +12,7 @@
 #include "Button.hpp"
 
 int main(){
-    
+
     std::array<int, 3> RGB = {167,193,217};
     
     //this is an example window of the Aquamarine UI, be free to use it
@@ -20,7 +20,8 @@ int main(){
     exampleWindow.CreateCustomizedWindow(1366, 768, RGB, 1.0f, "Default");
     
     shaderParser* shader = new shaderParser();
-    (*shader).shaderCreation("./dependencies/shader/shader.glsl");
+    std::string fullPath = SHADER_PATH + std::string("dependencies/shader/shader.glsl");
+    (*shader).shaderCreation(fullPath);
     (*shader).useShader();
     
     Aquamarine_Button exampleButton = Aquamarine_Button();

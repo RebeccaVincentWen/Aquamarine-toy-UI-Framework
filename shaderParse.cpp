@@ -29,8 +29,8 @@ std::tuple<std::string, std::string> shaderParser::shaderParse(std::string shade
     
     shaderType shader_type = shaderType::None;
     
-    static std::stringstream stringstream[2];
-    static std::string fileLine;
+    std::stringstream stringstream[2];
+    std::string fileLine;
     
     //accept the file and put the content of the file to the string as the source code of the shader
     while (getline(shaderReader,fileLine)) {
@@ -87,7 +87,7 @@ unsigned int shaderParser::shaderCompilation(std::string& shaderSource, unsigned
 unsigned int shaderParser::shaderCreation(std::string shaderFilePath){
     
     //get the shader source to the string to hold it temporarily hold the source code
-    static std::tuple<std::string,std::string>(TempShaderSource) = shaderParse(shaderFilePath);
+    std::tuple<std::string,std::string>(TempShaderSource) = shaderParse(shaderFilePath);
     shader_Source_Vertex = std::get<0>(TempShaderSource);
     shader_Source_fragment = std::get<1>(TempShaderSource);
     
